@@ -5,12 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float jump;
-    public float shortJump;
     public KeyCode JumpKey;
     private Rigidbody2D rb;
     private bool isGrounded;
     private GameManager gameManager;
-    private bool hasJumped;
     
 
     void Awake()
@@ -23,10 +21,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Check if the jump key is held down for a short jump
+        /*if (Input.GetKeyDown(JumpKey) && isGrounded)
+        {
+            rb.AddForce(Vector2.up * shortJump, ForceMode2D.Impulse);
+            hasJumped = false;
+        }*/
         if (Input.GetKeyDown(JumpKey) && isGrounded)
         {
-            rb.AddForce(Vector2.up * shortJump);
-            hasJumped = true;
+            rb.AddForce(Vector2.up * jump);
+        }
+
+        if (Input.GetKeyUp(JumpKey))
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, 0);
         }
     }
 
@@ -35,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
        if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
-            hasJumped = false;
         }
        if (other.gameObject.tag == "Enemy")
         {
