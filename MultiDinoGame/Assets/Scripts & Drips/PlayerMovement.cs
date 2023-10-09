@@ -20,9 +20,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if the jump key is held down for a short jump
+        /*if (Input.GetKeyDown(JumpKey) && isGrounded)
+        {
+            rb.AddForce(Vector2.up * shortJump, ForceMode2D.Impulse);
+            hasJumped = false;
+        }*/
         if (Input.GetKeyDown(JumpKey) && isGrounded)
         {
             rb.AddForce(Vector2.up * jump);
+        }
+
+        if (Input.GetKeyUp(JumpKey))
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, 0);
         }
     }
 

@@ -224,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227607426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.66211, y: -2.0760748, z: 3.976016}
+  m_LocalPosition: {x: -6.66211, y: -2.052, z: 3.976016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1802062225}
@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: 550
+  shortJump: 150
   JumpKey: 273
 --- !u!61 &227607429
 BoxCollider2D:
@@ -849,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365320079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.66211, y: -2.0760748, z: 3.976016}
+  m_LocalPosition: {x: -6.66211, y: -2.055, z: 3.976016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1425978301}
@@ -915,6 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: 550
+  shortJump: 150
   JumpKey: 32
 --- !u!1 &1425978300
 GameObject:
