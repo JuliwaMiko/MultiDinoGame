@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float jump;
-    public KeyCode Jump = KeyCode.K;
+    public KeyCode JumpKey;
     private Rigidbody2D rb;
     private bool isGrounded;
     private GameManager gameManager;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(JumpKey) && isGrounded)
         {
             rb.AddForce(Vector2.up * jump);
         }
