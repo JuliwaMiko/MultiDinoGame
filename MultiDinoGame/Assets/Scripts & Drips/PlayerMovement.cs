@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private GameManager gameManager;
+    private bool hasJumped;
     
 
     void Awake()
@@ -24,11 +25,8 @@ public class PlayerMovement : MonoBehaviour
         // Check if the jump key is held down for a short jump
         if (Input.GetKeyDown(JumpKey) && isGrounded)
         {
-            rb.AddForce(Vector2.up * shortJump, ForceMode2D.Impulse);
-        }
-        else
-        {
-            rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * shortJump);
+            hasJumped = true;
         }
     }
 
@@ -37,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
        if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            hasJumped = false;
         }
        if (other.gameObject.tag == "Enemy")
         {
