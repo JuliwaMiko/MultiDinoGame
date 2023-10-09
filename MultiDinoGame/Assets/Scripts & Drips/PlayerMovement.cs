@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode Jump = KeyCode.K;
     private Rigidbody2D rb;
     private bool isGrounded;
+    private GameManager gameManager;
     
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         }
        if (other.gameObject.tag == "Enemy")
         {
+            gameManager.SetPlayerDestroyed(true);
             Destroy(gameObject);
         }
     }
