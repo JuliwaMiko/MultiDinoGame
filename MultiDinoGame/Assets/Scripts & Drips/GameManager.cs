@@ -18,7 +18,12 @@ public class GameManager : MonoBehaviour
     {
         if (isPlayerDestroyed)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Restart the game when the R key is pressed
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+                
         }
     }
     public void SetPlayerDestroyed(bool destroyed)
