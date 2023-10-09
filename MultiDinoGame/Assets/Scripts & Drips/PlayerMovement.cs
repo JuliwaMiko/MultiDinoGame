@@ -35,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
         }
-       if (other.gameObject.CompareTag("Enemy"))
+       if (other.gameObject.tag == "Enemy")
         {
-            
+            Destroy(gameObject);
         }
     }
 
