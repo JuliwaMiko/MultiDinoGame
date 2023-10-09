@@ -6,6 +6,8 @@ public class Spawner : MonoBehaviour
 {
     float waitTime = 3;
     public GameObject EnemyPrefab;
+    public GameObject[] SpawnPoints;
+    int SpawnPointIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,8 @@ public class Spawner : MonoBehaviour
     {
         waitTime = Random.Range(1f, 3f);
         yield return new WaitForSeconds(waitTime);
-        Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+        SpawnPointIndex = Random.Range(0, 3);
+        Instantiate(EnemyPrefab, SpawnPoints[SpawnPointIndex]. transform.position, Quaternion.identity);
         StartCoroutine(SpawnTimer());
     }
 }
