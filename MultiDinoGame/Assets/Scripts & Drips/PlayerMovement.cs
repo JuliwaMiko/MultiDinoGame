@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float jump;
-    public float life;
     public KeyCode Jump = KeyCode.K;
     private Rigidbody2D rb;
     private bool isGrounded;
+    
 
     void Awake()
     {
