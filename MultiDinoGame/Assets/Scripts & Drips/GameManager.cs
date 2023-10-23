@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private float player2Score;
     private bool isPlayer1Destroyed = false;
     private bool isPlayer2Destroyed = false;
+    private bool gameEnded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,26 +25,36 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayer1Destroyed)
+        if (!gameEnded)
         {
-            player1Score += Time.deltaTime;
-            UpdatePlayer1ScoreText();
-
-            if (isPlayer2Destroyed)
+            if (isPlayer1Destroyed)
             {
-                player2Score += Time.deltaTime;
-                UpdatePlayer2ScoreText();
-            }
+                player1Score += Time.deltaTime;
+                UpdatePlayer1ScoreText();
 
-            if (isPlayer1Destroyed && isPlayer2Destroyed)
-            {
-                // Restart the game when the R key is pressed
-                if (Input.GetKeyDown(KeyCode.R))
+                if (isPlayer2Destroyed)
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    player2Score += Time.deltaTime;
+                    UpdatePlayer2ScoreText();
                 }
+
+                if (isPlayer1Destroyed && isPlayer2Destroyed)
+                {
+                    gameEnded = true;
+                   
+                }
+                if (gameEnded)
+                {
+                    // Restart the game when the R key is pressed
+                    if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    }
+                }
+              
             }
         }
+        
     }
     public void SetPlayer1Destroyed(bool destroyed)
     {
