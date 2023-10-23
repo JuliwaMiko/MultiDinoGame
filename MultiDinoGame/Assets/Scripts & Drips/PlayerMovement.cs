@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private GameManager gameManager;
-    
+    public bool isPlayer1 = true;
+    public bool isPlayer2 = false;
+
 
     void Awake()
     {
@@ -45,7 +47,15 @@ public class PlayerMovement : MonoBehaviour
         }
        if (other.gameObject.tag == "Enemy")
         {
-            gameManager.SetPlayerDestroyed(true);
+            if (isPlayer1)
+            {
+                gameManager.SetPlayer1Destroyed(true);
+            }
+            else
+            {
+                gameManager.SetPlayer2Destroyed(true);
+            }
+            
             Destroy(gameObject);
         }
     }

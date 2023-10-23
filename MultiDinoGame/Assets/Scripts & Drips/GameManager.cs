@@ -8,30 +8,57 @@ public class GameManager : MonoBehaviour
 {
     public TMP_Text player2ScoreText;
     public TMP_Text player1ScoreText;
-    private bool isPlayerDestroyed = false;
+
+    private float player1Score;
+    private float player2Score;
+    private bool isPlayer1Destroyed = false;
+    private bool isPlayer2Destroyed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        player1ScoreText.text = "Score";
-        player2ScoreText.text = "Score";
+        player1ScoreText.text = "Score: 0";
+        player2ScoreText.text = "Score: 0";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerDestroyed)
+        if (isPlayer1Destroyed)
         {
-            // Restart the game when the R key is pressed
-            if (Input.GetKeyDown(KeyCode.R))
+            player1Score += Time.deltaTime;
+            UpdatePlayer1ScoreText();
+
+            if (isPlayer2Destroyed)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                player2Score += Time.deltaTime;
+                UpdatePlayer2ScoreText();
             }
-                
+
+            if (isPlayer1Destroyed && isPlayer2Destroyed)
+            {
+                // Restart the game when the R key is pressed
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+            }
         }
     }
-    public void SetPlayerDestroyed(bool destroyed)
+    public void SetPlayer1Destroyed(bool destroyed)
     {
-        isPlayerDestroyed = destroyed;
+        isPlayer1Destroyed = destroyed;
+    }
+    public void SetPlayer2Destroyed(bool destroyed)
+    {
+        isPlayer2Destroyed = destroyed;
+    }
+    void UpdatePlayer1ScoreText()
+    {
+        player1ScoreText.text = "Player 1 Score: " + Mathf.Round(player1Score);
+    }
+    void UpdatePlayer2ScoreText()
+    {
+        player2ScoreText.text = "Player 2 Score: " + Mathf.Round(player2Score);
     }
 }
