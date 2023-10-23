@@ -27,34 +27,31 @@ public class GameManager : MonoBehaviour
     {
         if (!gameEnded)
         {
-            if (isPlayer1Destroyed)
+            if (!isPlayer1Destroyed)
             {
                 player1Score += Time.deltaTime;
                 UpdatePlayer1ScoreText();
+            }
+            if (!isPlayer2Destroyed)
+            {
+                player2Score += Time.deltaTime;
+                UpdatePlayer2ScoreText();
+            }
+            if (isPlayer1Destroyed && isPlayer2Destroyed)
+            {
+                gameEnded = true;
+            }
 
-                if (isPlayer2Destroyed)
-                {
-                    player2Score += Time.deltaTime;
-                    UpdatePlayer2ScoreText();
-                }
-
-                if (isPlayer1Destroyed && isPlayer2Destroyed)
-                {
-                    gameEnded = true;
-                   
-                }
-                if (gameEnded)
-                {
-                    // Restart the game when the R key is pressed
-                    if (Input.GetKeyDown(KeyCode.R))
-                    {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                    }
-                }
-              
+        }
+        if (gameEnded)
+        {
+            // Restart the game when the R key is pressed
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-        
+
     }
     public void SetPlayer1Destroyed(bool destroyed)
     {

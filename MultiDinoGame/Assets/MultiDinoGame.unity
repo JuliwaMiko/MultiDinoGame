@@ -244,8 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jump: 550
   JumpKey: 273
-  isPlayer1: 1
-  isPlayer2: 0
+  isPlayer1: 0
+  isPlayer2: 1
 --- !u!61 &227607429
 BoxCollider2D:
   m_ObjectHideFlags: 0
