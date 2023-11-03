@@ -38,14 +38,9 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, 0);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-       if (other.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-       if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             if (isPlayer1)
             {
@@ -55,9 +50,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 gameManager.SetPlayer2Destroyed(true);
             }
-            
+
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+       if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+       
     }
 
     private void OnCollisionExit2D(Collision2D other)
