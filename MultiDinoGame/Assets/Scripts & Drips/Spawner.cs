@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    float waitTime = 3;
+    float waitTime = 5;
     public GameObject EnemyPrefab;
     public GameObject[] SpawnPoints;
     int SpawnPointIndex = 0;
@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     }
     IEnumerator SpawnTimer()
     {
-        waitTime = Random.Range(1f, 3f);
+        waitTime = Random.Range(2f, 4f);
         yield return new WaitForSeconds(waitTime);
         SpawnPointIndex = Random.Range(0, 3);
         SpawnObjectScript sp = Instantiate(EnemyPrefab, SpawnPoints[SpawnPointIndex]. transform.position, Quaternion.identity).GetComponent<SpawnObjectScript>();
