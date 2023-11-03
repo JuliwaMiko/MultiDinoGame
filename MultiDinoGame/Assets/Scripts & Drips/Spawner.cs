@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject EnemyPrefab;
     public GameObject[] SpawnPoints;
     int SpawnPointIndex = 0;
+    float speedMultiplier = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +18,15 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        speedMultiplier += Time.deltaTime/30f;
     }
     IEnumerator SpawnTimer()
     {
         waitTime = Random.Range(1f, 3f);
         yield return new WaitForSeconds(waitTime);
         SpawnPointIndex = Random.Range(0, 3);
-        Instantiate(EnemyPrefab, SpawnPoints[SpawnPointIndex]. transform.position, Quaternion.identity);
+        SpawnObjectScript sp = Instantiate(EnemyPrefab, SpawnPoints[SpawnPointIndex]. transform.position, Quaternion.identity).GetComponent<SpawnObjectScript>();
+        sp.speed = speedMultiplier;
         StartCoroutine(SpawnTimer());
     }
 }
