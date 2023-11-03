@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * jump);
         }
 
-        if (Input.GetKeyUp(JumpKey))
+        if (Input.GetKeyUp(JumpKey) && rb.velocity.y > 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, 0);
         }
