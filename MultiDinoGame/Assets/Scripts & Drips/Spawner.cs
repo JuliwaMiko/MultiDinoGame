@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject EnemyPrefab;
     public GameObject[] SpawnPoints;
     int SpawnPointIndex = 0;
-    float speedMultiplier = 1;
+    float speedMultiplier = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedMultiplier += Time.deltaTime/30f;
+        speedMultiplier += Time.deltaTime/20f;
     }
     IEnumerator SpawnTimer()
     {
