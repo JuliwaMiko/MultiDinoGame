@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     }
     IEnumerator SpawnTimer()
     {
-        waitTime = Random.Range(2f, 4f);
+        waitTime = Random.Range(3f, 4f);
         yield return new WaitForSeconds(waitTime);
         SpawnPointIndex = Random.Range(0, 3);
         SpawnObjectScript sp = Instantiate(EnemyPrefab, SpawnPoints[SpawnPointIndex]. transform.position, Quaternion.identity).GetComponent<SpawnObjectScript>();
