@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] ExtraSpawn;
     int SpawnPointIndex = 0;
     int ExtraSpawnIndex = 0;
-    float speedMultiplier = 2;
+    float speedMultiplier = 4;
     float airSpawnRatio = 0.3f;
     // Start is called before the first frame update
     void Start()
