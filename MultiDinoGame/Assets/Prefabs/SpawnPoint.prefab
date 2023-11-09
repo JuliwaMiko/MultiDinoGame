@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 9063339844309707876, guid: 8a8cff07eeb3b354caf211eebdc615b9, type: 3}
+  SpawnPoints: []
+  ExtraSpawn: []
